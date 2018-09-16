@@ -22,11 +22,27 @@ class BooksApp extends React.Component {
     });
   }
 
+  // Functions to change the state of the books
+  // wantToRead(){
+
+  // }
+
+  // reading(){
+
+  // }
+
+  // read()
+  // {
+
+  // }
+
   render() {
     return (
       <div className="app">
-        <BooksMainPage />
-       {/*<BookSearch />*/} 
+      <BooksMainPage
+        books={this.state.books}
+      />
+     { /*<BookSearch />*/}
       </div>
     );
   }

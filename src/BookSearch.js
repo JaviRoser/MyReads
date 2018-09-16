@@ -14,15 +14,18 @@ import BooksMainPage from './BooksMainPage'
  		query:''
  	}
 	render() {
-		//  const { query } = this.state;
-		// let showingBooks;
-		// if (this.state.query) {
-		// 	const match = new RegExp(escapeRegExp(this.state.query), "i");
-		// 	showingBooks= books.filter(book =>
-		// 		// showingContacts = this.props.contacts.filter(contact =>
-		// 		match.test(book.id)
-		// 	);
-		// } else {
+    const  { books } = this.props;
+
+		 const { query } = this.state;
+		let showingBooks;
+		if (this.state.query) {
+			const match = new RegExp(escapeRegExp(this.state.query), "i");
+			showingBooks= books.filter(book =>
+				// showingContacts = this.props.contacts.filter(contact =>
+				match.test(book.id)
+			);
+		} 
+    // else {
 		// 	showingBooks = books;
 		// 	// showingContacts = this.props.contacts; After we declare at the beginning of the render we do not need to type this.props again
 		// }
