@@ -1,8 +1,8 @@
 import React from "react";
 import * as BooksAPI from "./BooksAPI";
 import "./App.css";
-// import BookSearch from "./BookSearch";
-import BooksMainPage from "./BooksMainPage";
+import BookSearch from "./BookSearch";
+// import BooksMainPage from "./BooksMainPage";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
 class BooksApp extends React.Component {
@@ -18,7 +18,7 @@ class BooksApp extends React.Component {
   };
   componentDidMount() {
     BooksAPI.getAll().then(books => {
-      this.setState({ books });
+      this.setState({ books: books });
     });
   }
 
@@ -36,13 +36,25 @@ class BooksApp extends React.Component {
 
   // }
 
+
+  moveBook = (book, shelf) => {
+    BooksAPI.update(book, shelf);
+  {/*Change this to made the code simpler*/}
+    BooksAPI.getAll().then(books => {
+      this.setState({ books: books });
+    });
+  }
+
+
+
   render() {
     return (
-      <div className="app">
-      <BooksMainPage
-        books={this.state.books}
-      />
-     { /*<BookSearch />*/}
+   <div className="app">
+          { /* <BooksMainPage 
+        books={this.state.books} 
+        moveBook={this.moveBook} 
+        />*/ }
+        <BookSearch/>
       </div>
     );
   }

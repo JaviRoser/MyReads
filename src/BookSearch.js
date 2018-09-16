@@ -3,32 +3,47 @@ import {Link} from 'react-router-dom'
 import escapeRegExp from "escape-string-regexp";
 import PropTypes from "prop-types";
 import BooksMainPage from './BooksMainPage'
-
+import Book from './Book'
+import * as BooksAPI from "./BooksAPI";
  class BookSearch extends Component {
-	static propTypes = {
-		books: PropTypes.array.isRequired,
+	// static propTypes = {
+	// 	books: PropTypes.array.isRequired,
 		
-	};
+	// };
  	state={
  	
- 		query:''
+ 		query:'',
+    booksBeingSearched:[]
  	}
+
+
+    updateQuery = query => {
+    this.setState({ 
+      query: query 
+    });
+  };
+
+  getTheBooksBeingSearched=(query)=>{
+      BooksAPI.search(query).then(booksBeingSearched => {
+      this.setState({ booksBeingSearched: booksBeingSearched });
+    });
+  }
+
 	render() {
     const  { books } = this.props;
-
-		 const { query } = this.state;
+		 const { query, booksBeingSearched } = this.state;
 		let showingBooks;
-		if (this.state.query) {
-			const match = new RegExp(escapeRegExp(this.state.query), "i");
-			showingBooks= books.filter(book =>
+		if (query) {
+			const match = new RegExp(escapeRegExp(query), "i");
+			showingBooks= booksBeingSearched.filter(booksBeingSearched =>
 				// showingContacts = this.props.contacts.filter(contact =>
-				match.test(book.id)
+				match.test(booksBeingSearched.id)
 			);
 		} 
-    // else {
-		// 	showingBooks = books;
-		// 	// showingContacts = this.props.contacts; After we declare at the beginning of the render we do not need to type this.props again
-		// }
+    else {
+			showingBooks = booksBeingSearched;
+			// showingContacts = this.props.contacts; After we declare at the beginning of the render we do not need to type this.props again
+		}
 
 		return (
 			     <div className="search-books">
@@ -49,14 +64,27 @@ import BooksMainPage from './BooksMainPage'
                 <input 
                 type="text" 
                 placeholder="Search by title or author"
-                // value={query}
+                value={query}
+                onChange={event => this.updateQuery(event.target.value)}
 
                 />
 
               </div>
             </div>
             <div className="search-books-results">
-              <ol className="books-grid"></ol>
+              <ol className="books-grid">
+              {booksBeingSearched.map(booksBeingSearched=>(
+                <li key={'booksBeingSearched.id'}>
+                 <Book 
+                        book={booksBeingSearched}
+                        // moveBook={moveBook}
+                     
+                         />
+
+                </li>
+                ))}
+
+              </ol>
             </div>
           </div>
 		);
