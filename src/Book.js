@@ -2,8 +2,13 @@ import React, { Component } from "react";
 
 class Book extends Component {
 	render() {
+		
 		// console.log(this.props.books);
 		const { book } = this.props;
+		const {moveBook}=this.props;
+		let imageThumbnail= book.imageLinks? 
+		book.imageLinks.thumbnail:'';
+		
 		// const { bookCurrentShelf } = this.props;
 		
 // console.log(this.props.moveBook)
@@ -16,12 +21,12 @@ class Book extends Component {
 							width: 128,
 							height: 193,
 							backgroundImage: `url("${
-								book.imageLinks.thumbnail
+								imageThumbnail
 							}")`
 						}}
 					/>
 					<div className="book-shelf-changer">
-						<select onChange={(event)=>this.props.moveBook(
+						<select onChange={(event)=>moveBook(
 							book,event.target.value
 							)}
 						value={book.shelf}

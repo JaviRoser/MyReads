@@ -1,14 +1,19 @@
 import React, { Component } from "react";
 import BookSearch from "./BookSearch";
+import BookShelf from "./BookShelf";
+import { PropTypes } from "prop-types";
 import Book from "./Book";
+import { BrowserRouter, Route, Link } from "react-router-dom";
 
 class BooksMainPage extends Component {
- 
+  static propTypes = {
+    books: PropTypes.array.isRequired
+  };
   render() {
     const { books } = this.props;
-    const{moveBook}=this.props;
+    const { moveBook } = this.props;
     // list the books
-    console.log(this.props.books);
+    // console.log(this.props.books);
     //
     return (
       <div className="list-books">
@@ -17,25 +22,16 @@ class BooksMainPage extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            <div className="bookshelf">
-              <h2 className="bookshelf-title">Currently Reading</h2>
-              <div className="bookshelf-books">
-                <ol className="books-grid">
-                 
-                  {books
-                    .filter(book => book.shelf === "currentlyReading")
-                    .map(book => (
-                      <li key={book.id}>
-                        <Book 
-                        book={book}
-                        moveBook={moveBook}
+            <BookShelf
+              books={books
+                .filter(book => book.shelf === "currentlyReading")
+                .map(book => (
+                  <li key={book.id}>
+                    <Book book={book} moveBook={moveBook} />
+                  </li>
+                ))}
+            />
 
-                        />
-                      </li>
-                    ))}
-                </ol>
-              </div>
-            </div>
             <div className="bookshelf">
               <h2 className="bookshelf-title">Want to Read</h2>
               <div className="bookshelf-books">
@@ -44,11 +40,7 @@ class BooksMainPage extends Component {
                     .filter(book => book.shelf === "wantToRead")
                     .map(book => (
                       <li key={book.id}>
-                        <Book 
-                        book={book}
-                        moveBook={moveBook}
-                     
-                         />
+                        <Book book={book} moveBook={moveBook} />
                       </li>
                     ))}
                 </ol>
@@ -58,15 +50,9 @@ class BooksMainPage extends Component {
               <h2 className="bookshelf-title">Read</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  {books
-                    .filter(book => book.shelf === "read")
-                    .map(book => (
+                  {books.filter(book => book.shelf === "read").map(book => (
                     <li key={book.id}>
-                      <Book 
-                      book={book}
-                      moveBook={moveBook}
-              
-                      />
+                      <Book book={book} moveBook={moveBook} />
                     </li>
                   ))}
                 </ol>
@@ -75,9 +61,10 @@ class BooksMainPage extends Component {
           </div>
         </div>
         <div className="open-search">
-          <a onClick={() => this.setState({ showSearchPage: true })}>
+        <Link to="/search">
+         
             Add a book
-          </a>
+          </Link>
         </div>
       </div>
     );
