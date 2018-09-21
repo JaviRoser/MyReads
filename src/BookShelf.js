@@ -1,23 +1,17 @@
 import React, { Component } from "react";
-// import BookShelf from "./BookShelf";
-import Book from "./Book";
 import PropTypes from "prop-types";
 
 class BookShelf extends Component {
-	static propTypes={
-	title:PropTypes.string.isRequired
-
-}
+	static propTypes = {
+		title: PropTypes.string.isRequired
+	};
 	render() {
-		 const { books } = this.props;
-    const { moveBook } = this.props;
+		const { books, moveBook } = this.props;
 		return (
 			<div className="bookshelf">
-				<h2 className="bookshelf-title"> Currently Reading</h2>
+				<h2 className="bookshelf-title"> Currently</h2>
 				<div className="bookshelf-books">
-					<ol className="books-grid">
-					
-					</ol>
+					<ol className="books-grid" />
 				</div>
 			</div>
 		);
