@@ -33,19 +33,9 @@ class BookSearch extends Component {
     }
   };
 
- {/*updateAllCurrentBookShelfValues(books){
-    const currentBooksBeingDisplayed=books.map(book=>{
-      book.shelf='none'
-      this.prop.books
-
-    })
-    
-  }*/} 
-
   render() {
     const { moveBook } = this.props;
     const { query, booksBeingSearched } = this.state;
-
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -63,13 +53,21 @@ class BookSearch extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {booksBeingSearched.map(booksBeingSearched => (
-              <li key={"booksBeingSearched.id"}>
-                <Book book={booksBeingSearched}
-
-                      moveBook={moveBook} />
-              </li>
-            ))}
+             {
+              booksBeingSearched.map(booksBeingSearched => {
+                const shelf='none'
+                return (
+                  
+                  <li key={booksBeingSearched.id}>
+                  <Book book={booksBeingSearched} 
+                  moveBook={moveBook} 
+                  currentShelf={shelf} />
+                  </li>
+                  )})
+            }
+             
+          
+       
           </ol>
         </div>
       </div>

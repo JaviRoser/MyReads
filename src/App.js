@@ -10,7 +10,7 @@ class BooksApp extends React.Component {
     books: []
   };
 
-  /*Fetch the books using BooksAPI.js*/
+  /*Fetch the books from BooksAPI.js*/
   fetchAllBooks = () => {
     BooksAPI.getAll().then(books => {
       this.setState({ books: books });
@@ -22,13 +22,13 @@ class BooksApp extends React.Component {
   }
 
   moveBook = (book, shelf) => {
-    BooksAPI.update(book, shelf).then(res=>{
+    BooksAPI.update(book, shelf).then(res => {
       this.fetchAllBooks();
-    })
+    });
   };
 
   render() {
-    const{books}=this.state;
+    const { books } = this.state;
     return (
       <div className="app">
         <Route
@@ -41,7 +41,7 @@ class BooksApp extends React.Component {
         <Route
           exact
           path="/search"
-          render={() => <BookSearch  books={books} moveBook={this.moveBook} />}
+          render={() => <BookSearch books={books} moveBook={this.moveBook} />}
         />
       </div>
     );

@@ -2,7 +2,8 @@ import React, { Component } from "react";
 
 class Book extends Component {
 	render() {
-		const { book, moveBook } = this.props;
+
+		const { book, moveBook, currentShelf } = this.props;
 		let imageThumbnail = book.imageLinks ? book.imageLinks.thumbnail : "";
 		return (
 			<div className="book">
@@ -20,7 +21,7 @@ class Book extends Component {
 							onChange={event =>
 								moveBook(book, event.target.value)
 							}
-							value={book.shelf}
+							value={currentShelf}
 						>
 							<option value="move" disabled>
 								Move to...
