@@ -9,7 +9,8 @@ class BookSearch extends Component {
   };
   state = {
     query: "",
-    booksBeingSearched: []
+    booksBeingSearched: [],
+    bookNoFoundErr: false
   };
 
   updateQuery = query => {
@@ -23,19 +24,34 @@ class BookSearch extends Component {
     /*if the word being type in is found by the search method
        A result is displayed. Otherwise the array is emptied */
     if (query) {
-      BooksAPI.search(query).then(booksBeingSearched => {
-        booksBeingSearched.error
+      BooksAPI.search(query).then(booksBeingSearchedResults => {
+        //Credit to Maeva from the EMEA Grow with Google Scholarship
+        booksBeingSearchedResults.error
           ? this.setState({ booksBeingSearched: [] })
-          : this.setState({ booksBeingSearched: booksBeingSearched });
+          : this.setState({ booksBeingSearched: booksBeingSearchedResults });
+
+        // show a message error if a book is not found
+        if (typeof booksBeingSearchedResults.length === "undefined") {
+          this.setState({
+            bookNoFoundErr: true
+          });
+        } else {
+          this.setState({
+            bookNoFoundErr: false
+          });
+        }
       });
     } else {
-      this.setState({ booksBeingSearched: [], query: "" });
+      this.setState({
+        booksBeingSearched: [],
+        query: ""
+      });
     }
   };
 
   render() {
     const { moveBook } = this.props;
-    const { query, booksBeingSearched } = this.state;
+    const { query, booksBeingSearched, bookNoFoundErr } = this.state;
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -53,23 +69,36 @@ class BookSearch extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-             {
+            {/*Show the book results, and allow to move the books
+        to the shelfs*/}
+
+            {!bookNoFoundErr &&
               booksBeingSearched.map(booksBeingSearched => {
-                const shelf='none'
+                const shelf = "none";
+                if (!booksBeingSearched.imageLinks) {
+                  booksBeingSearched.imageLinks = {
+                    thumbnail:
+                      "https://www.marjon.ac.uk/margen/img/blankBook.png"
+                  };
+                }
                 return (
-                  
                   <li key={booksBeingSearched.id}>
-                  <Book book={booksBeingSearched} 
-                  moveBook={moveBook} 
-                  currentShelf={shelf} />
+                    <Book
+                      book={booksBeingSearched}
+                      moveBook={moveBook}
+                      currentShelf={shelf}
+                    />
                   </li>
-                  )})
-            }
-             
-          
-       
+                );
+              })}
           </ol>
         </div>
+
+        {bookNoFoundErr && (
+          <div className="noBookFoundErr">
+            <p>No results, Please type in a new book title</p>
+          </div>
+        )}
       </div>
     );
   }

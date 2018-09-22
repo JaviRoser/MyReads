@@ -10,7 +10,6 @@ class BooksMainPage extends Component {
   };
   render() {
     const { books, moveBook } = this.props;
-    console.log(books);
     return (
       <div className="list-books">
         <div className="list-books-title">
@@ -18,59 +17,46 @@ class BooksMainPage extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            <div className="bookshelf">
-              <h2 className="bookshelf-title">Currently Reading</h2>
-              <div className="bookshelf-books">
-                <ol className="books-grid">
-                  {books
-                    .filter(book => book.shelf === "currentlyReading")
-                    .map(book => (
-                      <li key={book.id}>
-                        <Book
-                          book={book}
-                          moveBook={moveBook}
-                          currentShelf={book.shelf}
-                        />
-                      </li>
-                    ))}
-                </ol>
-              </div>
-            </div>
-            ;
-            <div className="bookshelf">
-              <h2 className="bookshelf-title">Want to Read</h2>
-              <div className="bookshelf-books">
-                <ol className="books-grid">
-                  {books
-                    .filter(book => book.shelf === "wantToRead")
-                    .map(book => (
-                      <li key={book.id}>
-                        <Book
-                          book={book}
-                          moveBook={moveBook}
-                          currentShelf={book.shelf}
-                        />
-                      </li>
-                    ))}
-                </ol>
-              </div>
-            </div>
-            <div className="bookshelf">
-              <h2 className="bookshelf-title">Read</h2>
-              <div className="bookshelf-books">
-                <ol className="books-grid">
-                  {books.filter(book => book.shelf === "read").map(book => (
-                    <li key={book.id}>
-                      <Book
-                        book={book}
-                        moveBook={moveBook}
-                        currentShelf={book.shelf}
-                      />
-                    </li>
-                  ))}
-                </ol>
-              </div>
-            </div>
+            <BookShelf
+              books={books
+                .filter(book => book.shelf === "currentlyReading")
+                .map(book => (
+                  <li key={book.id}>
+                    <Book
+                      book={book}
+                      moveBook={moveBook}
+                      currentShelf={book.shelf}
+                    />
+                  </li>
+                ))}
+              bookTitle="Currently Reading"
+            />
+            <BookShelf
+              books={books
+                .filter(book => book.shelf === "wantToRead")
+                .map(book => (
+                  <li key={book.id}>
+                    <Book
+                      book={book}
+                      moveBook={moveBook}
+                      currentShelf={book.shelf}
+                    />
+                  </li>
+                ))}
+              bookTitle="Want To Read"
+            />
+            <BookShelf
+              books={books.filter(book => book.shelf === "read").map(book => (
+                <li key={book.id}>
+                  <Book
+                    book={book}
+                    moveBook={moveBook}
+                    currentShelf={book.shelf}
+                  />
+                </li>
+              ))}
+              bookTitle="Read"
+            />
           </div>
         </div>
         <div className="open-search">

@@ -172,3 +172,13 @@ body, .app {
   text-align: center;
   font-size: 0.8em;
 }
+
+/*Error*/
+.noBookFoundErr{
+  font-size: 1.2em;
+  text-align: center;
+  list-style: none;
+  font-weight: 700;
+  color:#2e7c31;
+
+}
