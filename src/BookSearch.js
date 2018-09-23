@@ -30,7 +30,7 @@ class BookSearch extends Component {
           ? this.setState({ booksBeingSearched: [] })
           : this.setState({ booksBeingSearched: booksBeingSearchedResults });
 
-        // show a message error if a book is not found
+        // Change the state to know if a book is not found
         if (typeof booksBeingSearchedResults.length === "undefined") {
           this.setState({
             bookNoFoundErr: true
@@ -93,7 +93,7 @@ class BookSearch extends Component {
               })}
           </ol>
         </div>
-
+        {/*Shows an error message if a book is not found*/}
         {bookNoFoundErr && (
           <div className="noBookFoundErr">
             <p>Sorry, No results! Please type in a new search.</p>

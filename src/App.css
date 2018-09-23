@@ -17,6 +17,7 @@ body,
 }
 
 
+
 /* main page */
 
 .list-books-title {
@@ -53,7 +54,7 @@ body,
 }
 
 .bookshelf-title {
-  color:#005874;
+    color: #005874;
     border-bottom: 1px solid #dedede;
 }
 
@@ -80,6 +81,7 @@ body,
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     font-size: 0;
 }
+
 
 
 /* search page */
@@ -124,6 +126,7 @@ body,
 .search-books-results {
     padding: 80px 10px 20px;
 }
+
 
 
 /* books grid */
@@ -190,6 +193,7 @@ body,
 }
 
 
+
 /* book cover */
 
 .book-cover {
@@ -202,6 +206,7 @@ body,
     text-align: center;
     font-size: 0.8em;
 }
+
 
 
 /*Error*/
