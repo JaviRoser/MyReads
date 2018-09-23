@@ -1,5 +1,5 @@
 {
-  "homepagehttps:"https://javiroser.github.io/MyReads/",
+  "homepage": "https://javiroser.github.io/MyReads/",
   "dependencies": {
     "escape-regexp": "0.0.1",
     "prop-types": "^15.6.2",
@@ -15,8 +15,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "predeploy":"npm run build",
-    "deploy":"gh-pages -d build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   }
 }
