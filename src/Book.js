@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 class Book extends Component {
 	render() {
-
 		const { book, moveBook, currentShelf } = this.props;
 		let imageThumbnail = book.imageLinks ? book.imageLinks.thumbnail : "";
 		return (

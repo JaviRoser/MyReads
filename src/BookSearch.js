@@ -15,43 +15,42 @@ class BookSearch extends Component {
 
   updateQuery = query => {
     this.setState({
-      query: query
+      query: query.trim()
     });
     this.updateTheBooksBeingSearched(query);
   };
 
   updateTheBooksBeingSearched = query => {
+    if (query === "" || query === undefined) {
+      this.setState({
+        booksBeingSearched: []
+      });
+    }
     /*if the word being type in is found by the search method
        A result is displayed. Otherwise the array is emptied */
     if (query) {
       BooksAPI.search(query).then(booksBeingSearchedResults => {
         //Credit to Maeva from the EMEA Grow with Google Scholarship
-        booksBeingSearchedResults.error
-          ? this.setState({ booksBeingSearched: [] })
-          : this.setState({ booksBeingSearched: booksBeingSearchedResults });
 
-        // Change the state to know if a book is not found
-        if (typeof booksBeingSearchedResults.length === "undefined") {
-          this.setState({
-            bookNoFoundErr: true
-          });
-        } else {
-          this.setState({
-            bookNoFoundErr: false
-          });
-        }
+        booksBeingSearchedResults.error &&
+        typeof booksBeingSearchedResults.length === "undefined"
+          ? this.setState({ booksBeingSearched: [], bookNoFoundErr: true })
+          : this.setState({
+              booksBeingSearched: booksBeingSearchedResults,
+              bookNoFoundErr: false
+            });
       });
     } else {
       this.setState({
         booksBeingSearched: [],
-        query: ""
+        bookNoFoundErr: false
       });
     }
   };
-
   render() {
-    const { moveBook } = this.props;
+    const { moveBook, books } = this.props;
     const { query, booksBeingSearched, bookNoFoundErr } = this.state;
+
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -74,13 +73,20 @@ class BookSearch extends Component {
 
             {!bookNoFoundErr &&
               booksBeingSearched.map(booksBeingSearched => {
-                const shelf = "none";
+                let shelf = "none";
+                books.map(books => {
+                  books.id === booksBeingSearched.id
+                    ? (shelf = books.shelf)
+                    : "";
+                });
+
                 if (!booksBeingSearched.imageLinks) {
                   booksBeingSearched.imageLinks = {
                     thumbnail:
                       "https://www.marjon.ac.uk/margen/img/blankBook.png"
                   };
                 }
+
                 return (
                   <li key={booksBeingSearched.id}>
                     <Book
