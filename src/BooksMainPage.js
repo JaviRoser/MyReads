@@ -18,6 +18,7 @@ class BooksMainPage extends Component {
         <div className="list-books-content">
           <div>
             <BookShelf
+              bookTitle="Currently Reading"
               books={books
                 .filter(book => book.shelf === "currentlyReading")
                 .map(book => (
@@ -29,9 +30,9 @@ class BooksMainPage extends Component {
                     />
                   </li>
                 ))}
-              bookTitle="Currently Reading"
             />
             <BookShelf
+              bookTitle="Want To Read"
               books={books
                 .filter(book => book.shelf === "wantToRead")
                 .map(book => (
@@ -43,9 +44,9 @@ class BooksMainPage extends Component {
                     />
                   </li>
                 ))}
-              bookTitle="Want To Read"
             />
             <BookShelf
+              bookTitle="Read"
               books={books.filter(book => book.shelf === "read").map(book => (
                 <li key={book.id}>
                   <Book
@@ -55,7 +56,6 @@ class BooksMainPage extends Component {
                   />
                 </li>
               ))}
-              bookTitle="Read"
             />
           </div>
         </div>

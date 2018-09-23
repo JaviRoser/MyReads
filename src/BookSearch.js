@@ -96,7 +96,7 @@ class BookSearch extends Component {
 
         {bookNoFoundErr && (
           <div className="noBookFoundErr">
-            <p>No results, Please type in a new book title</p>
+            <p>Sorry, No results! Please type in a new search.</p>
           </div>
         )}
       </div>
