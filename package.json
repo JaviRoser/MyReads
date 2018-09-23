@@ -1,6 +1,7 @@
 {
-  "homepage": "https://javiroser.github.io/MyReads/",
+  
   "dependencies": {
+    "homepage": "https://javiroser.github.io/MyReads/",
     "escape-regexp": "0.0.1",
     "prop-types": "^15.6.2",
     "react": "^16.3.2",
