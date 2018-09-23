@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Book from "./Book";
-import * as BooksAPI from "./BooksAPI";
+import * as BooksAPI from "../utils/BooksAPI";
 class BookSearch extends Component {
   static propTypes = {
     books: PropTypes.array.isRequired
