@@ -18,9 +18,15 @@ Learn more about this project from below.
 
 >This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template. 
 [Read More..]( https://github.com/udacity/reactnd-project-myreads-starter)
-## How to run it 
+## How to run it
+
+### Prerequisites
+
 1. Install **node.js** in case you do not have it yet. 
 2. Once it is installed, install the react package by typing **npm install -g create-react-app** in your command prompt/terminal
+
+### Installing
+
 3. Download the zip file or clone the repo onto your computer:
 	-  **Download a zip File:** https://github.com/JaviRoser/MyReads/archive/master.zip
 	-  **Clone a repo:**  git clone https://github.com/JaviRoser/MyReads.git
@@ -35,5 +41,9 @@ Learn more about this project from below.
 ## Resources
 
 https://reactjs.org/
+
+## Acknowledgments
+
+- Udacity
 
 
