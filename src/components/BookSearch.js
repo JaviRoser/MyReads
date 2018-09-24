@@ -74,8 +74,8 @@ class BookSearch extends Component {
             {!bookNoFoundErr &&
               booksBeingSearched.map(booksBeingSearched => {
                 let shelf = "none";
-                books.map(books => {
-                  books.id === booksBeingSearched.id
+                books.forEach(books => {
+                  (books.id === booksBeingSearched.id)
                     ? (shelf = books.shelf)
                     : "";
                 });
