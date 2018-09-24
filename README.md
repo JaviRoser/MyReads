@@ -4,13 +4,13 @@
 
 This application was built with ReactJS. My Reads app was divided into several components:
 
-- Book.js: Contains book information. The cover, book title, and author's name
-- BookShelf.js: Contains information about the three book shelfs.
+- **Book.js**: Contains book information. The cover, book title, and author's name.
+- **BookShelf.js**: Contains information about the three book shelfs.
 	- Currently Reading 
 	- Want to Read
 	- Read
-- BookSearch.js: Let search for a new book to add into any of the three shelfs 
-- BooksMainPage.js: Display all books currently on the shelfs.  
+- **BookSearch.js:** Let search for a new book to add into any of the three shelfs 
+- **BooksMainPage.js:** Display all books currently on the shelfs.  
 
 These components are like JavaScript functions. They accept inputs ("props") and return elements to the screen
 
