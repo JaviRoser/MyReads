@@ -15,10 +15,12 @@ class BookSearch extends Component {
 
   updateQuery = query => {
     this.setState({
-      query: query.trim()
+      query: query
     });
     this.updateTheBooksBeingSearched(query);
   };
+
+  // Empty the array if not input
 
   updateTheBooksBeingSearched = query => {
     if (query === "" || query === undefined) {
@@ -75,7 +77,7 @@ class BookSearch extends Component {
               booksBeingSearched.map(booksBeingSearched => {
                 let shelf = "none";
                 books.forEach(books => {
-                  (books.id === booksBeingSearched.id)
+                  books.id === booksBeingSearched.id
                     ? (shelf = books.shelf)
                     : "";
                 });
