@@ -1,14 +1,14 @@
 {
   "dependencies": {
-    "homepage": "https://javiroser.github.io/MyReads/",
     "escape-regexp": "0.0.1",
+    "homepage": "https://javiroser.github.io/MyReads/",
     "prop-types": "^15.6.2",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1",
     "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
-    "gh-pages": "^2.0.0",
+    "gh-pages": "^2.0.1",
     "react-scripts": "1.1.4"
   },
   "scripts": {
